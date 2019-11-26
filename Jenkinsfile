@@ -28,6 +28,10 @@ pipeline {
             steps {
                 sh 'mvn clean package jacoco:report'
             }
+            post {
+                always {
+                    publishCoverage adapters: [jacocoAdapter('target/site/jacoco/jacoco.xml')]
+            } }
         }
     }
 }
